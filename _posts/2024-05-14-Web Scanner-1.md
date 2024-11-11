@@ -4,8 +4,7 @@
 
 1. webscan 기능 구현
 
-![image](https://github.com/user-
-attachments/assets/d66c241a-8117-4772-9988-7825afe33ec6)
+![image](https://github.com/user-attachments/assets/7c41fe2a-97a7-45bd-81ec-c70328d5c3a4)
 
 해당 웹사이트의 http 통신 정보를 스캔하는 기능
 

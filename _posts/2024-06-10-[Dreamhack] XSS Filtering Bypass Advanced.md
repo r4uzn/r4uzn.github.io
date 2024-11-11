@@ -60,7 +60,10 @@ flag 값을 얻기 위해 해야하는 것은, xss_filter를 우회하는 것이
 
 먼저, 우회하기 전에 만약 필터링 함수가 없었다면 어떤 값을 입력해야 하는지 생각해보자.
 
-<script>location.href="/memo?memo="+document.cookie</script> 정도로 작성해볼 수 있겠다.
+```
+<script>location.href="/memo?memo="+document.cookie</script> 
+```
+정도로 작성해볼 수 있겠다.
 
 시도해보자.
 
@@ -90,8 +93,9 @@ flag 값을 얻기 위해 해야하는 것은, xss_filter를 우회하는 것이
 
 이제 이걸 이용해서 /flag에 입력해보자.
 
+```
 <iframe src = "javasc\tript:locatio\tn.href='/memo?memo='+docu\tment.cookie">
-
+```
 post 방식이기 때문에 \t부분은 실제로 탭을 해서 입력한다.
 
 ![image](https://github.com/user-attachments/assets/97b32d78-2849-4c99-b4b9-30e26f87322a)

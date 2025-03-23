@@ -1,7 +1,7 @@
 ![Image](https://github.com/user-attachments/assets/2a06cdd3-591f-4bef-9dc8-fe66c5de5029)
 
 ![Image](https://github.com/user-attachments/assets/fba01ca5-a162-4b3f-b17f-40c8d10c3689)
-문제 페이지에 접속하면 404 NOT Found가 뜬다.
+문제 페이지에 접속하면 404 NOT Found가 뜬다
 
 ```python
 from flask import Flask, request

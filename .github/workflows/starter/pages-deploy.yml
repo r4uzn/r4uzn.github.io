@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # ✅ GitHub-hosted Runner 사용
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -34,7 +34,13 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
-      - name: Setup Ruby  # 🔥 최신 버전 사용
+      - name: Manually Install Ruby  # 🔥 직접 Ruby 설치
+        run: |
+          sudo apt update
+          sudo apt install -y ruby-full
+          ruby -v  # 설치된 버전 확인
+
+      - name: Setup Ruby  # 🔥 최신 버전의 setup-ruby 사용
         uses: ruby/setup-ruby@086ffb1a2090c870a3f881cc91ea83aa4243d408 # v1.195.0
         with:
           ruby-version: 3.1.4

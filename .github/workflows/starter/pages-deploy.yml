@@ -78,7 +78,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - name: Deploy to GitHub Pages
@@ -86,4 +86,3 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Print Deployment URL  # 배포 완료 후 URL 출력
-        run: echo "✅ 사이트가 배포되었습니다: ${{ steps.deployment.outputs.page_url }}"

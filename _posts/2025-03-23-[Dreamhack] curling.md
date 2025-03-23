@@ -84,9 +84,9 @@ scheme://[userinfo@]host[:port]/path[?query][#fragment]
 - `query`: `?key=value` 형식의 추가 데이터
 - `fragment`: `#` 이후의 부분
 
-여기서, 웹 브라우저와 `curl` 같은 도구는 `@` 기호가 포함된 경우, **`@` 오른쪽을 최종 목적지(host)로 인식하기 때문에 @를 이용해 URL 호스트를 우회할 수 있다.**
+여기서, 웹 브라우저와 `curl` 같은 도구는 `@` 기호가 포함된 경우, `@` 오른쪽을 최종 목적지(host)로 인식하기 때문에 @를 이용해 URL 호스트를 우회할 수 있다.
 
-ex)
+->
 
 ```c
 http://username:password@example.com/path

@@ -1,3 +1,6 @@
+![Image](https://github.com/user-attachments/assets/2a06cdd3-591f-4bef-9dc8-fe66c5de5029)
+
+![Image](https://github.com/user-attachments/assets/fba01ca5-a162-4b3f-b17f-40c8d10c3689)
 문제 페이지에 접속하면 404 NOT Found가 뜬다.
 
 ```python
@@ -91,7 +94,7 @@ http://username:password@example.com/path
 
 이런 것들을 종합해서 CURL을 이용해 요청을 보냈더니
 
-![image.png](attachment:be555364-83d6-4b24-80b8-785aba37c2d0:image.png)
+![Image](https://github.com/user-attachments/assets/9db5de14-6441-47d0-8293-a4a4371588d2)
 
 false가 반환됐다.
 
@@ -103,6 +106,7 @@ false가 반환됐다.
 
 따라서 끝에 `?dummy=1`  를 추가해서 요청하면
 
-![image.png](attachment:29aba126-522b-4f90-9a8e-d4325af88278:image.png)
+
+![Image](https://github.com/user-attachments/assets/482c21dd-a6f8-465e-9f1a-9ab58a14b8c6)
 
 플래그 값을 얻을 수 있다.

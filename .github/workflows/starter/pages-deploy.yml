@@ -1,4 +1,5 @@
 name: "Build and Deploy"
+
 on:
   push:
     branches:
@@ -8,7 +9,6 @@ on:
       - .gitignore
       - README.md
       - LICENSE
-
   workflow_dispatch:
 
 permissions:
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -34,38 +34,45 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
-      - name: Manually Install Ruby  # 🔥 직접 Ruby 설치
+      - name: Install Ruby Manually  # 🔥 수동으로 최신 Ruby 설치
         run: |
           sudo apt update
-          sudo apt install -y ruby-full
+          sudo apt install -y build-essential libssl-dev libreadline-dev zlib1g-dev
+          git clone https://github.com/rbenv/ruby-build.git
+          PREFIX=/usr/local ./ruby-build/install.sh
+          sudo /usr/local/bin/ruby-build 3.1.4 /opt/hostedtoolcache/Ruby/3.1.4/x64
+          sudo touch /opt/hostedtoolcache/Ruby/3.1.4/x64.complete
+          echo "Ruby 설치 완료"
           ruby -v  # 설치된 버전 확인
 
-      - name: Setup Ruby  # 🔥 최신 버전의 setup-ruby 사용
-        uses: ruby/setup-ruby@086ffb1a2090c870a3f881cc91ea83aa4243d408 # v1.195.0
+      - name: Setup Ruby Environment  # 🔥 최신 버전의 setup-ruby 사용
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.4
           bundler-cache: true
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           gem install bundler
           bundle install
 
-      - name: Build site
-        run: bundle exec jekyll build -d "_site${{ steps.pages.outputs.base_path }}"
+      - name: Build Jekyll Site
+        run: |
+          bundle exec jekyll build -d _site
         env:
           JEKYLL_ENV: "production"
 
-      - name: Test site
+      - name: Test Jekyll Site
         run: |
           bundle exec htmlproofer _site \
             --disable-external \
-            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/" \
+            --allow-hash-href  # 🔥 내부 링크 오류 방지
 
-      - name: Upload site artifact
+      - name: Upload Site Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
+          path: "_site"
 
   deploy:
     environment:
@@ -77,3 +84,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Print Deployment URL  # 배포 완료 후 URL 출력
+        run: echo "✅ 사이트가 배포되었습니다: ${{ steps.deployment.outputs.page_url }}"

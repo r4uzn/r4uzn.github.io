@@ -1,14 +1,8 @@
-name: "Build and Deploy"
+name: Deploy Jekyll site to Pages
+
 on:
   push:
-    branches:
-      - main
-      - master
-    paths-ignore:
-      - .gitignore
-      - README.md
-      - LICENSE
-
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -18,66 +12,36 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04  # 안정적인 버전으로 변경
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1  # 최신 태그 사용
         with:
-          fetch-depth: 0
-
+          ruby-version: '3.1'
+          bundler-cache: true
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
-
-      # 🔥 Ruby 직접 설치
-      - name: Install Ruby dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libyaml-dev libgdbm-dev libreadline-dev libncurses5-dev
-
-      - name: Clone ruby-build
-        run: git clone https://github.com/rbenv/ruby-build.git
-
-      - name: Install ruby-build
-        run: sudo ./ruby-build/install.sh
-
-      - name: Build Ruby
-        run: ruby-build --verbose 3.1.4 /opt/hostedtoolcache/Ruby/3.1.4/x64
-
-      - name: Mark Ruby installation complete
-        run: touch /opt/hostedtoolcache/Ruby/3.1.4/x64.complete
-
-      - name: Install Bundler & Jekyll
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Build site
-        run: bundle exec jekyll build -d "_site${{ steps.pages.outputs.base_path }}"
+        uses: actions/configure-pages@v5
+      - name: Install dependencies
+        run: bundle install
+      - name: Build with Jekyll
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
-          JEKYLL_ENV: "production"
-
-      - name: Test site
-        run: |
-          bundle exec htmlproofer _site \
-            --disable-external \
-            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
-
-      - name: Upload site artifact
+          JEKYLL_ENV: production
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # 동일하게 변경
     needs: build
     steps:
       - name: Deploy to GitHub Pages

@@ -1,7 +1,3 @@
-![image.png](attachment:578da00f-f6f7-4fdd-9c41-728f09f8fef3:image.png)
-
-![image.png](attachment:cd7e06ef-1985-4941-a2bc-e78837058f0a:image.png)
-
 문제 페이지에 접속하면 404 NOT Found가 뜬다.
 
 ```python

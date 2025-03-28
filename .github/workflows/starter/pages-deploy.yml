@@ -16,43 +16,24 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04  # ✅ GitHub Hosted Runner 강제 사용
-    env:
-      ACTIONS_RUNNER_DEBUG: true  # 🔍 GitHub Actions 디버깅 활성화
-
+    runs-on: ubuntu-22.04  # 안정적인 버전으로 변경
     steps:
-      - name: Check Runner Information 🔍
-        run: |
-          echo "🏗️ Runner Name: $(uname -a)"
-          echo "🏗️ Hostname: $(hostname)"
-          echo "🏗️ OS Release:"
-          cat /etc/os-release
-          echo "🏗️ Checking if it's a self-hosted runner"
-          if [ -f "/home/runner/self-hosted" ]; then
-            echo "❌ Detected as Self-Hosted Runner"
-            exit 1  # 강제 실패하여 Self-hosted Runner인지 확인
-          else
-            echo "✅ Running on GitHub Hosted Runner"
-          fi
-
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@v1  # 최신 태그 사용
         with:
           ruby-version: '3.1'
           bundler-cache: true
-
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-
+      - name: Install dependencies
+        run: bundle install
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
@@ -60,13 +41,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-22.04  # ✅ GitHub Hosted Runner 강제 사용
+    runs-on: ubuntu-22.04  # 동일하게 변경
     needs: build
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Print Deployment URL 🔗
-        run: echo "✅ 사이트가 배포되었습니다: ${{ steps.deployment.outputs.page_url }}"

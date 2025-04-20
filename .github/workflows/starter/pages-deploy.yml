@@ -16,24 +16,30 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04  # 안정적인 버전으로 변경
+    runs-on: ubuntu-22.04  # ✅ 안정된 공식 지원 환경
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Ruby
-        uses: ruby/setup-ruby@086ffb1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.4
           bundler-cache: true
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: bundle install
+
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
@@ -41,8 +47,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-22.04  # 동일하게 변경
+    runs-on: ubuntu-22.04  # ✅ 동일하게 맞춰줌
     needs: build
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

@@ -16,14 +16,14 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04  # ✅ 안정된 공식 지원 환경
+    runs-on: ubuntu-22.04  
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@086ffb1a2090c870a3f881cc91ea83aa4243d408
         with:
           ruby-version: 3.1.4
           bundler-cache: true

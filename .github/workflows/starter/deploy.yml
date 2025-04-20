@@ -44,6 +44,8 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
+          cache-version: 2  # or just change to a different number
+
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"

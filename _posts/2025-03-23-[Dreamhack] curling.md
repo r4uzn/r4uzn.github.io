@@ -109,4 +109,4 @@ false가 반환됐다.
 
 ![Image](https://github.com/user-attachments/assets/482c21dd-a6f8-465e-9f1a-9ab58a14b8c6)
 
-플래그 값을 얻을 수 있다..
+플래그 값을 얻을 수 있다.

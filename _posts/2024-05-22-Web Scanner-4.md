@@ -54,12 +54,12 @@ asyncio.run(main_test())
 
 이렇게 해서 일단 구현된 상태를 깃헙에 올렸다.
 
-Link : https://github.com/clevflo/clevsca
+Link : https://github.com/R4uzN/clevsca
 
 앞으로 천천히 개선할 사항
 
-스캔 기능 멈춤 - 스캔 목록이 너무 많아서 오래 걸리기 때문에 멈추는 기능이 필요함
+- 스캔 기능 멈춤 - 스캔 목록이 너무 많아서 오래 걸리기 때문에 멈추는 기능이 필요함
 
-스캔 상황 표시 - progressbar로 진행 상황을 표시할 필요가 있음
+- 스캔 상황 표시 - progressbar로 진행 상황을 표시할 필요가 있음
 
-리눅스 CLI로 사용 가능하도록 구현
+- CLI로 사용 가능하도록 구현

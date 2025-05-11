@@ -1,3 +1,7 @@
+---
+tags: [ctf, write-up]
+---
+
 문제를 보고 가장 먼저 HxD로 열어보았다.
 
 ![image](https://github.com/user-attachments/assets/5f93ce13-a4bc-4734-9626-dacd065dd07c)

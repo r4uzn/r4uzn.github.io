@@ -1,3 +1,7 @@
+---
+tags: [ctf, write-up]		
+---
+
 # **Forgotten Past**
 
 ![Image](/assets/img/hacktheon2025/image1.png)

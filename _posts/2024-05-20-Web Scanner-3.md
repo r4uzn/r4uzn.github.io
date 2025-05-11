@@ -1,3 +1,7 @@
+---
+tags: [dev]		
+---
+
 directory word list를 찾아보던 중 owasp에서 제작한 dirbuster라는 툴을 발견했다.
 
 해당 툴에서 사용되는 word list를 이용해야할 것 같다. 

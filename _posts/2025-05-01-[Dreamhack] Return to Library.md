@@ -1,3 +1,7 @@
+---
+tags: [dreamhack, wargame, write-up]		
+---
+
 @PLT
 
 ELF 바이너리에서 외부 바이너리 함수(system, puts, printf 등)은 실행파일 안에 실제 코드가 없고, glibc 같은 외부에서 제공된다.

@@ -1,3 +1,7 @@
+---
+tags: [dreamhack, wargame, write-up]		
+---
+
 ```bash
 // gcc -o oneshot1 oneshot1.c -fno-stack-protector -fPIC -pie
 

@@ -1,3 +1,7 @@
+---
+tags: [ctf, write-up]
+---
+
 pdf로 제공된 문제 파일을 열어보면 다음과 같은 내용을 볼 수 있다.
 
 ![image](https://github.com/user-attachments/assets/1e5afea8-6052-4a65-9051-29ff4144640c)

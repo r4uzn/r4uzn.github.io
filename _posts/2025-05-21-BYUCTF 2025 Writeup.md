@@ -1,3 +1,7 @@
+---
+tags: [ctf, write-up]		
+---
+
 ![Image](/assets/img/byuctf2025/image1.png)
 
 ### 문제 코드

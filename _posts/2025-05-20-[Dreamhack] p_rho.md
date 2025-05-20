@@ -1,3 +1,7 @@
+---
+tags: [dreamhack, wargame, write-up]		
+---
+
 ![Image](/assets/img/p_rho/image1.png)
 
 ![Image](/assets/img/p_rho/image2.png)

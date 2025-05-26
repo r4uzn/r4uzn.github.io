@@ -1,6 +1,5 @@
 ---
 tags: [dreamhack, wargame, write-up]		
-published : false
 ---
 
 ![Image](/assets/img/pwn-library/image1.png)

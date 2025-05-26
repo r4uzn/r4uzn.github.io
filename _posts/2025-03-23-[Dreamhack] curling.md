@@ -1,5 +1,6 @@
 ---
-tags: [dreamhack, wargame, write-up]		
+tags: [dreamhack, wargame, write-up]	
+published : false	
 ---
 
 ![Image](https://github.com/user-attachments/assets/2a06cdd3-591f-4bef-9dc8-fe66c5de5029)

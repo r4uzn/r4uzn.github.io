@@ -1,5 +1,6 @@
 ---
 tags: [dreamhack, wargame, write-up]		
+published : false
 ---
 
 ```bash

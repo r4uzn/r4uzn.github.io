@@ -49,7 +49,8 @@ while (board[lastfree][colint] == player1symbol || board[lastfree][colint] == pl
 
 이 프로그램은 종료 시 exit() 함수를 호출한다. 따라서 exit@GOT의 값을 조작하려 win()로 리디렉션하면 쉘 획득이 가능하다.
 
-이 문제는 PIE(Position Independent Executable)가 적용된 환경이며, 해당 바이너리의 모든 섹션(.text, .got, .bss 등)은 실행 시 무작위 PIE base에 따라 재배치된다. 따라서 win() 함수의 절대 주소도 실행할 때마다 바뀌지만, .text 섹션 내 오프셋은 고정되어 있어 하위 12비트(즉, 하위 2바이트)는 변하지 않는다.
+![image.png](/assets/img/greyctf2025/image3.png)
+PIE(Position Independent Executable)가 적용되어있기 때문에 해당 바이너리의 모든 섹션(.text, .got, .bss 등)은 실행 시 무작위 PIE base에 따라 재배치된다. 따라서 win() 함수의 절대 주소도 실행할 때마다 바뀌지만, .text 섹션 내 오프셋은 고정되어 있어 하위 12비트(즉, 하위 2바이트)는 변하지 않는다.
 
 ```bash
 pwndbg> p win
@@ -151,4 +152,4 @@ while True:
 
 ```
 
-![image.png](/assets/img/greyctf2025/image3.png)
+![image.png](/assets/img/greyctf2025/image4.png)

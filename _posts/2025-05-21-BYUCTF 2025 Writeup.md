@@ -1,5 +1,5 @@
 ---
-tags: [ctf, write-up]		
+tags: [ctf, write-up, pwn, system]		
 ---
 
 ![Image](/assets/img/byuctf2025/image1.png)

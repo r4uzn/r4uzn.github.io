@@ -65,8 +65,8 @@ export const homeItems: HomeItem[] = [
   {
     label: 'Project',
     title: 'UnrealEngine Fuzzing',
-    meta: 'WinAFL / LibFuzzer',
-    tags: ['WinAFL', 'LibFuzzer']
+    meta: 'AFL++ / LibFuzzer',
+    tags: ['AFL++', 'LibFuzzer']
   },
   {
     label: 'Project',

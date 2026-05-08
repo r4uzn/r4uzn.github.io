@@ -109,7 +109,7 @@ function renderHome(): string {
         <p class="eyebrow">${escapeHtml(profile.role)}</p>
         <h1>${profile.mainName}</h1>
         <p class="headline">${profile.headline}</p>
-        <p class="intro">${profile.intro}</p>
+        ${profile.intro ? `<p class="intro">${escapeHtml(profile.intro)}</p>` : ''}
         <div class="focus-row">${tagList(profile.focus)}</div>
       </section>
 
@@ -246,7 +246,7 @@ function renderInfo(): string {
       <section class="page-head">
         <p class="eyebrow">Info</p>
         <h1>About me</h1>
-        <p>${escapeHtml(profile.intro)}</p>
+        ${profile.intro ? `<p>${escapeHtml(profile.intro)}</p>` : ''}
       </section>
 
       <section class="info-grid">

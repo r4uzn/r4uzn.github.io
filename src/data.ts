@@ -19,8 +19,8 @@ export const profile = {
   mainName: 'Sungmin Kang | rauzn',
   role: 'Security Researcher',
   headline: 'Research Team : Jeroscope | CTF Team : Fermion',
-  intro: 'Security Researcher',
-  focus: ['Pwnable', 'Reversing', 'Web'],
+  intro: '',
+  focus: ['Pwnable', 'Reversing', 'Web', 'Kernel', 'Fuzzing'],
   links: [
     { label: 'GitHub', href: 'https://github.com/r4uzn' },
     { label: 'Email', href: 'mailto:726ksm@gmail.com' },

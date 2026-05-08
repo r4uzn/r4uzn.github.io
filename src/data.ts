@@ -82,8 +82,7 @@ export const homeItems: HomeItem[] = [
   },
   {
     label: 'Awards',
-    title: 'Security Awards',
-    body: 'Selected awards from security competitions and research activities.',
+    title: 'Awards',
     meta: '2018 - 2025',
     details: [
       '2018. Kongju National University Information Security Gifted Education Center, Advanced High School B, Grand Prize',

@@ -245,7 +245,7 @@ function renderInfo(): string {
     `
       <section class="page-head">
         <p class="eyebrow">Info</p>
-        <h1>About ${profile.name}</h1>
+        <h1>About me</h1>
         <p>${escapeHtml(profile.intro)}</p>
       </section>
 

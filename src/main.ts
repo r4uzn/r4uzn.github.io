@@ -211,14 +211,13 @@ function renderBlog(route: Extract<Route, { name: 'blog' }>): string {
     `
       <section class="page-head">
         <p class="eyebrow">Blog</p>
-        <h1>Research Notes</h1>
-        <p>풀이와 연구 과정을 주제별로 정리했습니다. 검색어와 카테고리 필터를 같이 사용할 수 있습니다.</p>
+        <h1>Blog</h1>
       </section>
 
       <section class="blog-tools" aria-label="Blog filters">
         <label class="search-box">
           <span>Search</span>
-          <input id="post-search" type="search" value="${escapeHtml(route.query ?? '')}" placeholder="xss, reversing, scanner..." />
+          <input id="post-search" type="search" value="${escapeHtml(route.query ?? '')}" placeholder="" />
         </label>
         <div class="category-tabs" aria-label="Categories">
           ${['All', ...categories]

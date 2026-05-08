@@ -16,6 +16,7 @@ export type HomeItem = {
 
 export const profile = {
   name: 'rauzn',
+  mainName: 'Sungmin Kang | rauzn',
   role: 'Security Researcher',
   headline: 'Research Team : Jeroscope | CTF Team : Fermion',
   intro: 'Security Researcher',

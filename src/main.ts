@@ -107,7 +107,7 @@ function renderHome(): string {
     `
       <section class="home-intro" data-motion>
         <p class="eyebrow">${escapeHtml(profile.role)}</p>
-        <h1>${profile.name}</h1>
+        <h1>${profile.mainName}</h1>
         <p class="headline">${profile.headline}</p>
         <p class="intro">${profile.intro}</p>
         <div class="focus-row">${tagList(profile.focus)}</div>

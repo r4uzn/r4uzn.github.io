@@ -1,3 +1,7 @@
+---
+tags: [dreamhack, wargame, write-up]		
+---
+
 ![image](https://github.com/user-attachments/assets/a48b8e23-7f2b-46c9-b172-136736e70b3f)
 
 문제는 vuln(xss) page , memo , flag 페이지로 나눠져 있다.

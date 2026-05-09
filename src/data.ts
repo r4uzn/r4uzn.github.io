@@ -75,6 +75,12 @@ export const homeItems: HomeItem[] = [
     tags: ['Firmware', 'App']
   },
   {
+    label: 'Project',
+    title: 'Risky Behavior Detection CCTV',
+    meta: 'Computer Vision / CCTV',
+    tags: ['Computer Vision', 'Detection', 'CCTV']
+  },
+  {
     label: 'CTF',
     title: 'CTF',
     meta: 'Competition Records',

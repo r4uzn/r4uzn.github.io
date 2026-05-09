@@ -31,7 +31,7 @@ export const profile = {
 export const timeline: TimelineItem[] = [
   {
     period: '2026',
-    title: 'Hacktheon CTF 2026 Qualifier 7th',
+    title: 'Hacktheon CTF 2026 Qualifier 7th (Finalist)',
     body: 'Hacktheon CTF 2026 예선에서 7위를 기록했습니다.',
     tags: ['CTF', 'Hacktheon']
   },
@@ -84,7 +84,7 @@ export const homeItems: HomeItem[] = [
     label: 'CTF',
     title: 'CTF',
     meta: 'Competition Records',
-    details: ['Hacktheon CTF 2026 Qualifier 7th', 'WHS CTF 2025 3rd']
+    details: ['Hacktheon CTF 2026 Qualifier 7th (Finalist)', 'WHS CTF 2025 3rd']
   },
   {
     label: 'Awards',

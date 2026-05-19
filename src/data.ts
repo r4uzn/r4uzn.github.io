@@ -84,7 +84,6 @@ export const homeItems: HomeItem[] = [
   {
     label: 'Project',
     title: 'HWP Viewer Analysis',
-    body: 'Windbg, IDA를 활용한 HWP viewer analysis project.',
     meta: 'Windbg / IDA',
     tags: ['Windbg', 'IDA', 'HWP']
   },

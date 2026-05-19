@@ -37,6 +37,12 @@ function tagList(tags: string[]): string {
   return tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('');
 }
 
+function highlightedHeadline(value: string): string {
+  return escapeHtml(value)
+    .replace('Jeroscope', '<span class="team-name team-name--research">Jeroscope</span>')
+    .replace('Fermion', '<span class="team-name team-name--ctf">Fermion</span>');
+}
+
 function postUrl(slug: string): string {
   return `#/post/${encodeURIComponent(slug)}`;
 }
@@ -108,7 +114,7 @@ function renderHome(): string {
       <section class="home-intro" data-motion>
         <p class="eyebrow">${escapeHtml(profile.role)}</p>
         <h1>${profile.mainName}</h1>
-        <p class="headline">${profile.headline}</p>
+        <p class="headline">${highlightedHeadline(profile.headline)}</p>
         ${profile.intro ? `<p class="intro">${escapeHtml(profile.intro)}</p>` : ''}
         <div class="focus-row">${tagList(profile.focus)}</div>
       </section>

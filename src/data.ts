@@ -107,7 +107,6 @@ export const homeItems: HomeItem[] = [
       '2024. 11. Daejeon University 2nd White Hacker Competition (CTF), Grand Prize',
       '2024. 12. IoT Innovation Convergence University 2024 IN-JEJU Challenge, Excellence Award',
       '2025. 9. WhiteHat School 3rd CTF, 3rd Place Encouragement Award',
-      '2025. 10. Daejeon University 3rd White Hacker Competition (CTF), Excellence Award',
       '2025. 11. 2025 Cybersecurity Society Paper Competition, Encouragement Award'
     ]
   }

@@ -89,8 +89,8 @@ export const homeItems: HomeItem[] = [
   {
     label: 'Project',
     title: 'Risky Behavior Detection CCTV',
-    meta: 'Computer Vision / CCTV',
-    tags: ['Computer Vision', 'Detection', 'CCTV']
+    meta: 'Computer Vision / YOLO / RTSP / CCTV',
+    tags: ['Computer Vision', 'YOLO', 'RTSP', 'Detection', 'CCTV']
   },
   {
     label: 'CTF',

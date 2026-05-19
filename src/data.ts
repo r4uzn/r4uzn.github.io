@@ -70,6 +70,13 @@ export const homeItems: HomeItem[] = [
   },
   {
     label: 'Project',
+    title: 'GodotEngine Fuzzing',
+    body: 'Windbg, AFL++, WinAFL을 활용한 Godot Engine fuzzing project.',
+    meta: 'Windbg / AFL++ / WinAFL',
+    tags: ['Windbg', 'AFL++', 'WinAFL']
+  },
+  {
+    label: 'Project',
     title: 'IoT Firmware, App Vulnerability Analysis',
     meta: 'Firmware / App',
     tags: ['Firmware', 'App']

@@ -586,6 +586,11 @@ h3 {
   background: var(--surface-2);
 }
 
+.article-content p:has(> img[src="/assets/img/byuctf2025/image1.png"]),
+.article-content p:has(> img[src="/assets/img/greyctf2025/image1.png"]) {
+  display: none;
+}
+
 .article-content pre {
   overflow-x: auto;
   border: 1px solid var(--line);

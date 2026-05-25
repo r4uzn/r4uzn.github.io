@@ -8,6 +8,10 @@ import './generate-posts.mjs';
 const require = createRequire(import.meta.url);
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const dist = join(root, 'dist');
+const distAssets = join(dist, 'assets');
+const rootAssets = join(root, 'assets');
+const distPosts = join(dist, 'posts');
+const rootPosts = join(root, 'posts');
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(join(dist, 'assets'), { recursive: true });
@@ -37,4 +41,15 @@ const result = spawnSync(process.execPath, [tsc, '-p', join(root, 'tsconfig.json
 
 if (result.status !== 0) {
   process.exit(result.status ?? 1);
+}
+
+// Keep branch-based GitHub Pages compatible by syncing the built SPA assets to the repo root.
+for (const file of ['data.js', 'main.js', 'posts.generated.js', 'styles.css']) {
+  cpSync(join(distAssets, file), join(rootAssets, file));
+}
+
+mkdirSync(rootPosts, { recursive: true });
+
+for (const file of readdirSync(distPosts)) {
+  cpSync(join(distPosts, file), join(rootPosts, file));
 }

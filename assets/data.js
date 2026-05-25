@@ -11,38 +11,6 @@ export const profile = {
         { label: 'Instagram', href: 'https://instagram.com/uznra' }
     ]
 };
-export const timeline = [
-    {
-        period: '2026',
-        title: 'Hacktheon CTF 2026 Qualifier 7th (Team : 나는야임영웅)',
-        body: 'Hacktheon CTF 2026 예선에서 7위를 기록했습니다.',
-        tags: ['CTF', 'Hacktheon']
-    },
-    {
-        period: '2025',
-        title: 'WHS CTF 2025 3rd',
-        body: '화이트햇스쿨 3기 CTF에서 3위 장려상을 수상했습니다.',
-        tags: ['CTF', 'WHS']
-    },
-    {
-        period: '2025',
-        title: 'Cyber Security Paper Competition',
-        body: '2025 사이버안보학회 논문경진대회 장려상을 수상했습니다.',
-        tags: ['Research', 'Paper']
-    },
-    {
-        period: '2024',
-        title: 'Security Competitions',
-        body: '대전대학교 화이트해커 경진대회, IN-JEJU Challenge 등에서 수상했습니다.',
-        tags: ['CTF', 'Award']
-    },
-    {
-        period: '2018',
-        title: 'Information Security Gifted Education',
-        body: '공주대학교 정보보호영재교육원 고등부 기초심화B 최우수상을 수상했습니다.',
-        tags: ['Award', 'Education']
-    }
-];
 export const homeItems = [
     {
         label: 'Project',

@@ -1,4 +1,4 @@
-import { homeItems, profile, timeline } from './data.js';
+import { homeItems, profile } from './data.js';
 import { categories, posts, type Post } from './posts.generated.js';
 
 type Route =
@@ -155,23 +155,6 @@ function renderHome(): string {
             }
           )
           .join('')}
-      </section>
-
-      <section class="compact-timeline" data-motion>
-        <p class="eyebrow">Timeline</p>
-        <ol>
-          ${timeline
-            .map(
-              (item) => `
-                <li>
-                  <time>${escapeHtml(item.period)}</time>
-                  <span>${escapeHtml(item.title)}</span>
-                </li>
-              `
-            )
-            .join('')}
-        </ol>
-        <a class="text-link" href="#/blog">Read blog notes</a>
       </section>
     `,
     'home'

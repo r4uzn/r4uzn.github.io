@@ -57,7 +57,7 @@ export const homeItems: HomeItem[] = [
     title: 'CTF',
     meta: 'Competition Records',
     details: [
-      'Defcon CTF 2026 Qualifier 3rd (Team : Cold Fusion)',
+      'DEFCON CTF 2026 Qualifier 3rd (Team : Cold Fusion)',
       'Hacktheon CTF 2026 Qualifier 7th (Team : 나는야임영웅)',
       'WHS CTF 2025 3rd'
     ]

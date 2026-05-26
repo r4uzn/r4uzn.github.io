@@ -105,6 +105,5 @@ pycdas를 이용해 디컴파일 해보니 latitude와 longitude에 각각 “2.
 
 이 중 “2.593627” 이라는 값을 입력하면 정답이다.
 
-![Image](/assets/img/hacktheon2025/image20.png)
 
 FLAG{2.593627}

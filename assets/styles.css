@@ -549,10 +549,44 @@ h3 {
 }
 
 .article-content img {
+  cursor: zoom-in;
   margin: 1rem 0;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--surface-2);
+}
+
+.has-lightbox {
+  overflow: hidden;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 2rem;
+  border: 0;
+  background: rgba(5, 8, 15, 0.88);
+  cursor: zoom-out;
+}
+
+.image-lightbox.is-open {
+  display: flex;
+}
+
+.image-lightbox img {
+  max-width: min(1100px, 94vw);
+  max-height: 90vh;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+  object-fit: contain;
 }
 
 .article-content p:has(> img[src="/assets/img/byuctf2025/image1.png"]),

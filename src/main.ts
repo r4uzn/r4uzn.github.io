@@ -15,6 +15,7 @@ if (!appRoot) {
 
 const app: HTMLDivElement = appRoot;
 let teardownMotion = () => {};
+let teardownLightbox = () => {};
 
 function escapeHtml(value: string): string {
   return value
@@ -365,6 +366,63 @@ function renderMarkdown(markdown: string): string {
   return chunks.join('');
 }
 
+function initImageLightbox(container: HTMLElement): () => void {
+  const overlay = document.createElement('button');
+  overlay.className = 'image-lightbox';
+  overlay.type = 'button';
+  overlay.setAttribute('aria-label', 'Close image preview');
+  overlay.innerHTML = '<img alt="" />';
+
+  const preview = overlay.querySelector<HTMLImageElement>('img');
+  if (!preview) {
+    return () => {};
+  }
+
+  const close = () => {
+    overlay.classList.remove('is-open');
+    document.body.classList.remove('has-lightbox');
+    preview.removeAttribute('src');
+    preview.alt = '';
+  };
+
+  const open = (image: HTMLImageElement) => {
+    preview.src = image.currentSrc || image.src;
+    preview.alt = image.alt;
+    document.body.append(overlay);
+    document.body.classList.add('has-lightbox');
+    overlay.classList.add('is-open');
+    overlay.focus();
+  };
+
+  const onClick = (event: MouseEvent) => {
+    const image = (event.target as HTMLElement | null)?.closest<HTMLImageElement>('.article-content img');
+    if (!image) {
+      return;
+    }
+
+    event.preventDefault();
+    open(image);
+  };
+
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && overlay.classList.contains('is-open')) {
+      close();
+    }
+  };
+
+  container.addEventListener('click', onClick);
+  overlay.addEventListener('click', close);
+  window.addEventListener('keydown', onKeyDown);
+
+  return () => {
+    close();
+    container.removeEventListener('click', onClick);
+    overlay.removeEventListener('click', close);
+    window.removeEventListener('keydown', onKeyDown);
+    overlay.remove();
+  };
+}
+
 async function renderPost(slug: string): Promise<void> {
   const post = posts.find((item) => item.slug === slug);
 
@@ -409,6 +467,8 @@ async function renderPost(slug: string): Promise<void> {
     }
     const markdown = await response.text();
     target.innerHTML = renderMarkdown(markdown);
+    teardownLightbox();
+    teardownLightbox = initImageLightbox(target);
   } catch (error) {
     target.innerHTML = `<p class="empty">글을 불러오지 못했습니다. ${escapeHtml(String(error))}</p>`;
   }
@@ -550,6 +610,8 @@ function initPageMotion(routeName: Route['name']): void {
 function render(): void {
   teardownMotion();
   teardownMotion = () => {};
+  teardownLightbox();
+  teardownLightbox = () => {};
 
   const route = parseRoute();
 

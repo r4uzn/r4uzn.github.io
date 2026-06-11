@@ -1,5 +1,16 @@
 export const posts = [
     {
+        "slug": "cve-2023-21768-1day",
+        "title": "CVE-2023-21768 1day 분석",
+        "date": "2026-06-11",
+        "category": "Notes",
+        "tags": [
+            "Notes"
+        ],
+        "summary": "CVE 2023 21768 CVE 2023 21768은 Windows의 AFD, 즉 Ancillary Function Driver for WinSock에서 발생한 로컬 권한 상승 취약점이다. 중요한 부분은 AFD 내부의 NotifySock 관련 처리 경로에서 유저가 전...",
+        "file": "2026-06-11-CVE-2023-21768 1day 분석.md"
+    },
+    {
         "slug": "poc-ctf-2025-writeup",
         "title": "POC-CTF 2025 Writeup",
         "date": "2025-10-14",
@@ -302,8 +313,8 @@ export const posts = [
     }
 ];
 export const categories = [
-    "CTF",
     "Notes",
+    "CTF",
     "Pwn",
     "Blog",
     "Web Security",

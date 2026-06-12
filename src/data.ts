@@ -59,7 +59,8 @@ export const homeItems: HomeItem[] = [
     details: [
       'DEFCON CTF 2026 Qualifier 3rd (Team : Cold Fusion)',
       'Hacktheon CTF 2026 Qualifier 7th (Team : 나는야임영웅)',
-      'WHS CTF 2025 3rd'
+      'TRX CTF 2026 11th (Team : Fermion)',
+      'WHS CTF 2025 3rd (Team : 플래그 데몬 헌터스)'
     ]
   },
   {

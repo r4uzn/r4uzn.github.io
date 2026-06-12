@@ -1,14 +1,14 @@
 export const posts = [
     {
-        "slug": "cve-2023-21768-1day",
-        "title": "CVE-2023-21768 1day 분석",
+        "slug": "cve-2023-21768-1-day",
+        "title": "CVE-2023-21768 1-day 분석",
         "date": "2026-06-11",
         "category": "Notes",
         "tags": [
             "Notes"
         ],
         "summary": "CVE 2023 21768 CVE 2023 21768은 Windows의 AFD, 즉 Ancillary Function Driver for WinSock에서 발생한 로컬 권한 상승 취약점이다. 중요한 부분은 AFD 내부의 NotifySock 관련 처리 경로에서 유저가 전...",
-        "file": "2026-06-11-CVE-2023-21768 1day 분석.md"
+        "file": "2026-06-11-CVE-2023-21768 1-day 분석.md"
     },
     {
         "slug": "poc-ctf-2025-writeup",
@@ -78,7 +78,7 @@ export const posts = [
             "Pwn",
             "System"
         ],
-        "summary": "프로그램의 실행은 먼저 그 프로그램이 메인 메모리에 로드되는 과정으로 시작된다. 이후 운영체제는 코드, 데이터, 스택, 힙 등 역할에 따라 구분된 메모리 영역을 구성하고, 각 영역은 상호작용을 통해 전체 프로그램의 실행 흐름을 담당한다. 메모리 공간(RAM)은 프로그램...",
+        "summary": "프로그램의 실행은 먼저 그 프로그램이 메인 메모리에 로드되는 과정으로 시작된다. 이후 운영체제는 코드, 데이터, 스택, 힙 등 역할에 따라 구분된 메모리 영역을 구성하고, 각 영역은 상호작용을 통해 전체 프로그램의 실행 흐름을 담당한다. 1. 코드 영역 (Code Se...",
         "file": "2025-05-31-메모리 구조.md"
     },
     {
